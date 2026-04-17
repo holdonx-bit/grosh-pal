@@ -151,12 +151,9 @@ btnExport.addEventListener('click', () => {
 const rateLabelEl = document.getElementById('rateLabel');
 const rateInput   = document.getElementById('rate');
 
-rateInput.addEventListener('focus', () => {
-  rateInput.value = rateInput.value.replace(/\s/g, '');
-});
-rateInput.addEventListener('blur', () => {
-  const num = parseFloat(rateInput.value.replace(/\s/g, ''));
-  if (!isNaN(num)) rateInput.value = num.toLocaleString('uk-UA');
+rateInput.addEventListener('input', () => {
+  const digits = rateInput.value.replace(/\D/g, '');
+  rateInput.value = digits ? parseInt(digits).toLocaleString('uk-UA') : '';
 });
 
 document.getElementById('currency').addEventListener('change', () => {
