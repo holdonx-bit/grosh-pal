@@ -37,7 +37,8 @@ function formatTime(seconds) {
 }
 
 function formatCost(amount) {
-  return CURRENCY_SYMBOLS[getCurrency()] + amount.toFixed(2);
+  const formatted = amount.toLocaleString('uk-UA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return CURRENCY_SYMBOLS[getCurrency()] + formatted;
 }
 
 function updateDisplay() {
