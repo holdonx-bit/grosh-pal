@@ -19,7 +19,7 @@ const historyTable= document.getElementById('historyTable');
 const emptyMsg    = document.getElementById('emptyHistory');
 
 function getParticipants() { return parseInt(document.getElementById('participants').value) || 1; }
-function getRate()         { return parseFloat(document.getElementById('rate').value) || 0; }
+function getRate()         { return parseFloat(document.getElementById('rate').value.replace(/\s/g, '')) || 0; }
 function getCurrency()     { return document.getElementById('currency').value; }
 
 const WORK_HOURS_PER_MONTH = 168; // 8h × 21 day
@@ -149,6 +149,15 @@ btnExport.addEventListener('click', () => {
 });
 
 const rateLabelEl = document.getElementById('rateLabel');
+const rateInput   = document.getElementById('rate');
+
+rateInput.addEventListener('focus', () => {
+  rateInput.value = rateInput.value.replace(/\s/g, '');
+});
+rateInput.addEventListener('blur', () => {
+  const num = parseFloat(rateInput.value.replace(/\s/g, ''));
+  if (!isNaN(num)) rateInput.value = num.toLocaleString('uk-UA');
+});
 
 document.getElementById('currency').addEventListener('change', () => {
   const symbol = CURRENCY_SYMBOLS[getCurrency()];
