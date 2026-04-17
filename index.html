@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Грошопал 🔥</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Грошопал 🔥</h1>
+
+    <div class="inputs">
+      <label>
+        Учасники
+        <input type="number" id="participants" value="5" min="1" />
+      </label>
+      <label>
+        <span>ЗП на місяць (<span id="rateLabel">₴</span>/особу)</span>
+        <input type="number" id="rate" value="100000" min="1" />
+      </label>
+      <label>
+        Валюта
+        <select id="currency">
+          <option value="UAH">UAH ₴</option>
+          <option value="USD">USD $</option>
+          <option value="EUR">EUR €</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="display" id="display">
+      <div class="time" id="time">00:00:00</div>
+      <div class="cost" id="cost">₴0.00</div>
+      <div class="cost-alert" id="costAlert"></div>
+    </div>
+
+    <div class="controls">
+      <button id="btnStart" class="btn btn-start">Старт</button>
+      <button id="btnStop" class="btn btn-stop" disabled>Стоп</button>
+      <button id="btnReset" class="btn btn-reset">Скинути</button>
+    </div>
+
+    <div class="history-section">
+      <div class="history-header">
+        <h2>Історія зустрічей</h2>
+        <button id="btnExport" class="btn btn-export">Експорт CSV</button>
+      </div>
+      <table id="historyTable">
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Тривалість</th>
+            <th>Учасники</th>
+            <th>Вартість</th>
+          </tr>
+        </thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+      <p id="emptyHistory">Історія порожня</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
